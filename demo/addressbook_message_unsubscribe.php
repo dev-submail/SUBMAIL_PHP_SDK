@@ -1,7 +1,7 @@
 <?PHP
     /*
      | Submail addressbook/message/unsubscribe API demo
-     | SUBMAIL SDK Version 2.0 --PHP
+     | SUBMAIL SDK Version 2.1 --PHP
      | copyright 2011 - 2015 SUBMAIL
      |--------------------------------------------------------------------------
      */
