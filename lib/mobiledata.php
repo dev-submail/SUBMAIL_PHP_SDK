@@ -1,5 +1,5 @@
 <?PHP
-    class voice{
+    class mobiledata{
         
         protected $base_url='http://api.submail.cn/';
         
@@ -75,8 +75,8 @@
             return json_decode($output,true);
         }
         
-        public function verify($request){
-            $api=$this->base_url.'voice/verify.json';
+        public function package($request){
+            $api=$this->base_url.'mobiledata/package.json';
             $request['appid']=$this->voice_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->voice_configs['sign_type'])
@@ -90,7 +90,46 @@
                 $request['sign_type']=$this->voice_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $send=$this->APIHttpRequestCURL($api,$request);
-            return $send;
+            $package=$this->APIHttpRequestCURL($api,$request);
+            return $package;
         }
+        
+        public function TOService($request){
+            $api=$this->base_url.'mobiledata/toservice.json';
+            $request['appid']=$this->voice_configs['appid'];
+            $request['timestamp']=$this->getTimestamp();
+            if(empty($this->voice_configs['sign_type'])
+               || $this->voice_configs['sign_type']==""
+               || $this->voice_configs['sign_type']!="normal"
+               || $this->voice_configs['sign_type']!="md5"
+               || $this->voice_configs['sign_type']!="sha1"){
+                $this->signType='normal';
+            }else{
+                $this->signType=$this->voice_configs['sign_type'];
+                $request['sign_type']=$this->voice_configs['sign_type'];
+            }
+            $request['signature']=$this->createSignature($request);
+            $TOService=$this->APIHttpRequestCURL($api,$request);
+            return $TOService;
+        }
+        
+        public function charge($request){
+            $api=$this->base_url.'mobiledata/charge.json';
+            $request['appid']=$this->voice_configs['appid'];
+            $request['timestamp']=$this->getTimestamp();
+            if(empty($this->voice_configs['sign_type'])
+               || $this->voice_configs['sign_type']==""
+               || $this->voice_configs['sign_type']!="normal"
+               || $this->voice_configs['sign_type']!="md5"
+               || $this->voice_configs['sign_type']!="sha1"){
+                $this->signType='normal';
+            }else{
+                $this->signType=$this->voice_configs['sign_type'];
+                $request['sign_type']=$this->voice_configs['sign_type'];
+            }
+            $request['signature']=$this->createSignature($request);
+            $charge=$this->APIHttpRequestCURL($api,$request);
+            return $charge;
+        }
+
     }

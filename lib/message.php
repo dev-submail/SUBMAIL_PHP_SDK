@@ -1,7 +1,7 @@
 <?PHP
     class message{
         
-        protected $base_url='https://api.submail.cn/';
+        protected $base_url='http://api.submail.cn/';
         
         var $message_configs;
         

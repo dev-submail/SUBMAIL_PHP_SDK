@@ -1,7 +1,7 @@
 <?PHP
     class mail{
         
-        protected $base_url='https://api.submail.cn/';
+        protected $base_url='http://api.submail.cn/';
         
         var $mail_configs;
         var $signType='normal';
