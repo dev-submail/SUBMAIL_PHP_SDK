@@ -163,7 +163,8 @@
             
             if(!empty($this->Attachments)){
                 for($i=0;$i<count($this->Attachments);$i++){
-                    $request['attachments['.$i.']']="@".$this->Attachments[$i];
+                    //$request['attachments['.$i.']']="@".$this->Attachments[$i];
+                    $request['attachments['.$i.']'] = curl_file_create($this->Attachments[$i]);
                 }
             }
 
