@@ -1,6 +1,6 @@
 <?PHP
     /*
-     | Submail addressbook/message/subscribe API demo
+     | Submail message/xsend API demo
      | SUBMAIL SDK Version 2.3 --PHP
      | copyright 2011 - 2016 SUBMAIL
      |--------------------------------------------------------------------------
@@ -20,41 +20,34 @@
     require_once('../SUBMAILAutoload.php');
     
     /*
-     |初始化 ADDRESSBOOKMessage 类
+     |初始化 MESSAGETemplateGET 类 (获取短信模板)
      |--------------------------------------------------------------------------
      */
     
-    $addressbook=new ADDRESSBOOKMessage($message_configs);
+    $submail=new MESSAGETemplateGET($message_configs);
     
-    /*
-     |必选参数
-     |--------------------------------------------------------------------------
-     |设置订阅的联系人11位手机号码
-     |--------------------------------------------------------------------------
-     */
-    
-    $addressbook->setAddress('1**********');
     
     /*
      |可选参数
      |--------------------------------------------------------------------------
-     |设置目标地址薄标识，将联系人添加到目标地址薄
-     |默认值为 subscribe 即订阅地址薄
+     |设置需要获取短信模板ID，舍弃该参数，API将返回账户下最新的1000条短信模板
      |--------------------------------------------------------------------------
      */
     
-    $addressbook->setAddressbook('subscribe');
+    $submail->SetTemplate('AiLO2');
+    
     
     /*
-     |调用 subscribe 方法添加联系人
+     |调用 getTemplate 方法获取短信模板
      |--------------------------------------------------------------------------
      */
     
-    $subscribe=$addressbook->subscribe();
+    $templates=$submail->getTemplate();
+    
     
     /*
-     |打印服务器返回码
+     |打印服务器返回值
      |--------------------------------------------------------------------------
      */
     
-    print_r($subscribe);
+    print_r($templates);
