@@ -1,0 +1,23 @@
+{
+  "name": "submail/submail-php",
+  "description": "submail sdk.",
+  "type": "project",
+  "keywords": ["submail"],
+  "homepage": "http://submail.cn",
+  "license": "MIT",
+  "authors": [{
+    "name": "your name",
+    "email": "your email"
+  }],
+  "autoload": {
+    "files": ["SUBMAILAutoload.php"]
+  },
+  "require": {
+    "php": ">=5.3"
+  },
+  "extra": {
+       "branch-alias": {
+           "dev-master": "2.3-dev"
+       }
+   }
+}
