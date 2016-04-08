@@ -6,8 +6,8 @@
   "homepage": "http://submail.cn",
   "license": "MIT",
   "authors": [{
-    "name": "your name",
-    "email": "your email"
+    "name": "submail",
+    "email": "service@submail.cn"
   }],
   "autoload": {
     "files": ["SUBMAILAutoload.php"]
