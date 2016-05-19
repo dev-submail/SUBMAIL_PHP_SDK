@@ -1,7 +1,7 @@
 <?PHP
     /*
-     | Submail message/xsend API demo
-     | SUBMAIL SDK Version 2.3 --PHP
+     | Submail log/message API demo
+     | SUBMAIL SDK Version 2.4 --PHP
      | copyright 2011 - 2016 SUBMAIL
      |--------------------------------------------------------------------------
      */

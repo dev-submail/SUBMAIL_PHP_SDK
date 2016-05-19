@@ -122,7 +122,6 @@
             $send=$this->APIHttpRequestCURL($api,$request);
             return $send;
         }
-        
         public function multixsend($request){
             $api=$this->base_url.'message/multixsend.json';
             $request['appid']=$this->message_configs['appid'];
