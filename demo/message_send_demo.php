@@ -1,7 +1,7 @@
 <?PHP
     /*
      | Submail message/send API demo
-     | SUBMAIL SDK Version 2.3 --PHP
+     | SUBMAIL SDK Version 2.5 --PHP
      | copyright 2011 - 2016 SUBMAIL
      |--------------------------------------------------------------------------
      */

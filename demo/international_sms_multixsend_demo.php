@@ -1,6 +1,6 @@
 <?PHP
     /*
-     | Submail message/multixsend API demo
+     | Submail internationalsms/multixsend API demo
      | SUBMAIL SDK Version 2.5 --PHP
      | copyright 2011 - 2016 SUBMAIL
      |--------------------------------------------------------------------------
@@ -20,16 +20,17 @@
     require_once('../SUBMAILAutoload.php');
     
     /*
-     |初始化 MESSAGEMultiXsend 类
+     |初始化 INTERNATIONALSMSMultiXsend 类
      |--------------------------------------------------------------------------
      */
     
-    $submail=new MESSAGEMultiXsend($message_configs);
+    $submail=new INTERNATIONALSMSMultiXsend($intersms_configs);
     
     
     /*
      |multi 参数示例一
      |无文本变量
+     |设置短信接收的国际手机号码，使用标准的 E164 格式，e.g. +1778889901，仅支持单个手机号码，不支持 +86 国内手机号码
      |--------------------------------------------------------------------------
      */
     
@@ -37,6 +38,10 @@
     
     foreach($contacts as $contact){
         $multi=new Multi();
+        /*
+         |setTo 设置短信接收的国际手机号码，使用标准的 E164 格式，e.g. +1778889901，不支持 +86 国内手机号码
+         |--------------------------------------------------------------------------
+         */
         $multi->setTo($contact);
         $submail->addMulti($multi->build());
     }
@@ -49,7 +54,7 @@
      |--------------------------------------------------------------------------
      */
     
-    $contacts=array("18*********","15*********");
+    $contacts=array("+18*********","+5*********");
     
     foreach($contacts as $contact){
         $multi=new Multi();
@@ -66,24 +71,24 @@
      */
     
     $contacts=array(
-                 array(
-                       "to"=>"18*********",
-                       "vars"=>array(
-                                     "name"=>"jack",
-                                     "code1"=>"FAD62979791",
-                                     "code1"=>"FAD62979792",
-                                     )
-                       
-                       ),
-                 array(
-                       "to"=>"15*********",
-                       "vars"=>array(
-                                     "name"=>"tom",
-                                     "code1"=>"FAD62979793",
-                                     "code1"=>"FAD62979794",
-                                     )
-                       )
-                 );
+                    array(
+                          "to"=>"+8*********",
+                          "vars"=>array(
+                                        "name"=>"jack",
+                                        "code1"=>"FAD62979791",
+                                        "code2"=>"FAD62979792",
+                                        )
+                          
+                          ),
+                    array(
+                          "to"=>"+5*********",
+                          "vars"=>array(
+                                        "name"=>"tom",
+                                        "code1"=>"FAD62979793",
+                                        "code2"=>"FAD62979794",
+                                        )
+                          )
+                    );
     
     foreach($contacts as $contact){
         $multi=new Multi();
@@ -92,10 +97,10 @@
         foreach($contact['vars'] as $key=>$value){
             $multi->addVar($key,$value);
         }
-
+        
         $submail->addMulti($multi->build());
     }
-
+    
     /*
      |必选参数
      |--------------------------------------------------------------------------
@@ -105,7 +110,7 @@
     
     $submail->SetProject('2glEg1');
     
-
+    
     /*
      |调用 multixsend 方法发送短信
      |--------------------------------------------------------------------------
