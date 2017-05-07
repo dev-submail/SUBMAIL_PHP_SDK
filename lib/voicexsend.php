@@ -1,6 +1,6 @@
 <?PHP
-    require 'message.php';
-    class MESSAGEXsend{
+    require 'voice.php';
+    class VOICEXsend{
         
         protected $appid='';
         
@@ -26,10 +26,6 @@
         
         public function SetTo($address){
             $this->To=trim($address);
-        }
-        
-        public function AddAddressbook($addressbook){
-            array_push($this->Addressbook,$addressbook);
         }
         
         public function SetProject($project){
@@ -58,13 +54,13 @@
             return $request;
         }
         public function xsend(){
-            $message_configs['appid']=$this->appid;
-            $message_configs['appkey']=$this->appkey;
+            $voice_configs['appid']=$this->appid;
+            $voice_configs['appkey']=$this->appkey;
             if($this->sign_type!=''){
-                $message_configs['sign_type']=$this->sign_type;
+                $voice_configs['sign_type']=$this->sign_type;
             }
-            $message=new message($message_configs);
-            return $message->xsend($this->buildRequest());
+            $voice=new voice($voice_configs);
+            return $voice->xsend($this->buildRequest());
         }
         
     }

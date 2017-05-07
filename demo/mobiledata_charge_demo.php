@@ -1,8 +1,8 @@
 <?PHP
     /*
      | Submail mobiledata/charge API demo
-     | SUBMAIL SDK Version 2.3 --PHP
-     | copyright 2011 - 2016 SUBMAIL
+     | SUBMAIL SDK Version 2.6 --PHP
+     | copyright 2011 - 2017 SUBMAIL
      |--------------------------------------------------------------------------
      */
     

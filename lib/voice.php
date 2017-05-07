@@ -1,7 +1,8 @@
 <?PHP
     class voice{
         
-        protected $base_url='http://api.submail.cn/';
+        protected $base_url='http://api.mysubmail.com/';
+        //protected $base_url='http://api.submail.cn/';
         
         var $voice_configs;
         
@@ -80,10 +81,64 @@
             $request['appid']=$this->voice_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->voice_configs['sign_type'])
-               || $this->voice_configs['sign_type']==""
-               || $this->voice_configs['sign_type']!="normal"
-               || $this->voice_configs['sign_type']!="md5"
-               || $this->voice_configs['sign_type']!="sha1"){
+               && $this->voice_configs['sign_type']==""
+               && $this->voice_configs['sign_type']!="normal"
+               && $this->voice_configs['sign_type']!="md5"
+               && $this->voice_configs['sign_type']!="sha1"){
+                $this->signType='normal';
+            }else{
+                $this->signType=$this->voice_configs['sign_type'];
+                $request['sign_type']=$this->voice_configs['sign_type'];
+            }
+            $request['signature']=$this->createSignature($request);
+            $send=$this->APIHttpRequestCURL($api,$request);
+            return $send;
+        }
+        public function xsend($request){
+            $api=$this->base_url.'voice/xsend.json';
+            $request['appid']=$this->voice_configs['appid'];
+            $request['timestamp']=$this->getTimestamp();
+            if(empty($this->voice_configs['sign_type'])
+               && $this->voice_configs['sign_type']==""
+               && $this->voice_configs['sign_type']!="normal"
+               && $this->voice_configs['sign_type']!="md5"
+               && $this->voice_configs['sign_type']!="sha1"){
+                $this->signType='normal';
+            }else{
+                $this->signType=$this->voice_configs['sign_type'];
+                $request['sign_type']=$this->voice_configs['sign_type'];
+            }
+            $request['signature']=$this->createSignature($request);
+            $send=$this->APIHttpRequestCURL($api,$request);
+            return $send;
+        }
+        public function send($request){
+            $api=$this->base_url.'voice/send.json';
+            $request['appid']=$this->voice_configs['appid'];
+            $request['timestamp']=$this->getTimestamp();
+            if(empty($this->voice_configs['sign_type'])
+               && $this->voice_configs['sign_type']==""
+               && $this->voice_configs['sign_type']!="normal"
+               && $this->voice_configs['sign_type']!="md5"
+               && $this->voice_configs['sign_type']!="sha1"){
+                $this->signType='normal';
+            }else{
+                $this->signType=$this->voice_configs['sign_type'];
+                $request['sign_type']=$this->voice_configs['sign_type'];
+            }
+            $request['signature']=$this->createSignature($request);
+            $send=$this->APIHttpRequestCURL($api,$request);
+            return $send;
+        }
+        public function multixsend($request){
+            $api=$this->base_url.'voice/multixsend.json';
+            $request['appid']=$this->voice_configs['appid'];
+            $request['timestamp']=$this->getTimestamp();
+            if(empty($this->voice_configs['sign_type'])
+               && $this->voice_configs['sign_type']==""
+               && $this->voice_configs['sign_type']!="normal"
+               && $this->voice_configs['sign_type']!="md5"
+               && $this->voice_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->voice_configs['sign_type'];

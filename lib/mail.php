@@ -1,7 +1,8 @@
 <?PHP
     class mail{
         
-        protected $base_url='http://api.submail.cn/';
+        protected $base_url='http://api.mysubmail.com/';
+        //protected $base_url='http://api.submail.cn/';
         
         var $mail_configs;
         var $signType='normal';
@@ -80,10 +81,10 @@
             $request['appid']=$this->mail_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->mail_configs['sign_type'])
-               || $this->mail_configs['sign_type']==""
-               || $this->mail_configs['sign_type']!="normal"
-               || $this->mail_configs['sign_type']!="md5"
-               || $this->mail_configs['sign_type']!="sha1"){
+               && $this->mail_configs['sign_type']==""
+               && $this->mail_configs['sign_type']!="normal"
+               && $this->mail_configs['sign_type']!="md5"
+               && $this->mail_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->mail_configs['sign_type'];
@@ -100,10 +101,10 @@
             $request['appid']=$this->mail_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->mail_configs['sign_type'])
-               || $this->mail_configs['sign_type']==""
-               || $this->mail_configs['sign_type']!="normal"
-               || $this->mail_configs['sign_type']!="md5"
-               || $this->mail_configs['sign_type']!="sha1"){
+               && $this->mail_configs['sign_type']==""
+               && $this->mail_configs['sign_type']!="normal"
+               && $this->mail_configs['sign_type']!="md5"
+               && $this->mail_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->mail_configs['sign_type'];
@@ -119,10 +120,10 @@
             $request['appid']=$this->mail_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->mail_configs['sign_type'])
-               || $this->mail_configs['sign_type']==""
-               || $this->mail_configs['sign_type']!="normal"
-               || $this->mail_configs['sign_type']!="md5"
-               || $this->mail_configs['sign_type']!="sha1"){
+               && $this->mail_configs['sign_type']==""
+               && $this->mail_configs['sign_type']!="normal"
+               && $this->mail_configs['sign_type']!="md5"
+               && $this->mail_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->mail_configs['sign_type'];
@@ -138,10 +139,10 @@
             $request['appid']=$this->mail_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->mail_configs['sign_type'])
-               || $this->mail_configs['sign_type']==""
-               || $this->mail_configs['sign_type']!="normal"
-               || $this->mail_configs['sign_type']!="md5"
-               || $this->mail_configs['sign_type']!="sha1"){
+               && $this->mail_configs['sign_type']==""
+               && $this->mail_configs['sign_type']!="normal"
+               && $this->mail_configs['sign_type']!="md5"
+               && $this->mail_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->mail_configs['sign_type'];

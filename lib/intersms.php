@@ -1,7 +1,8 @@
 <?PHP
     class intersms{
         
-        protected $base_url='http://api.submail.cn/';
+        protected $base_url='http://api.mysubmail.com/';
+        //protected $base_url='http://api.submail.cn/';
         
         var $intersms_configs;
         

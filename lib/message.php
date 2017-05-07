@@ -1,8 +1,8 @@
 <?PHP
     class message{
         
-        protected $base_url='http://api.submail.cn/';
-        
+        protected $base_url='http://api.mysubmail.com/';
+        //protected $base_url='http://api.submail.cn/';
         var $message_configs;
         
         var $signType='normal';
@@ -90,10 +90,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -109,10 +109,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -127,10 +127,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -148,10 +148,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -167,10 +167,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -185,10 +185,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -203,10 +203,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -221,10 +221,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -239,10 +239,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
@@ -257,10 +257,10 @@
             $request['appid']=$this->message_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
             if(empty($this->message_configs['sign_type'])
-               || $this->message_configs['sign_type']==""
-               || $this->message_configs['sign_type']!="normal"
-               || $this->message_configs['sign_type']!="md5"
-               || $this->message_configs['sign_type']!="sha1"){
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
                 $this->signType=$this->message_configs['sign_type'];
