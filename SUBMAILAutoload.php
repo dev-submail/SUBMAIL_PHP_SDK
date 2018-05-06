@@ -23,7 +23,8 @@
             spl_autoload_register('SUBMAILAutoload');
         }
     } else {
-        function __autoload($classname){
+        //function __autoload($classname){
+        function spl_autoload_register($classname){
             SUBMAILAutoload($classname);
         }
     }
