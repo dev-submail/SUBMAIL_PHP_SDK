@@ -1,12 +1,7 @@
 <?PHP
-    require 'intersms.php';
     class INTERNATIONALSMSXsend{
         
-        protected $appid='';
-        
-        protected $appkey='';
-        
-        protected $sign_type='';
+        protected $configs;
         
         protected $To=array();
         
@@ -17,11 +12,7 @@
         protected $Vars=array();
         
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
         
         public function SetTo($address){
@@ -58,12 +49,7 @@
             return $request;
         }
         public function xsend(){
-            $intersms_configs['appid']=$this->appid;
-            $intersms_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $intersms_configs['sign_type']=$this->sign_type;
-            }
-            $intersms=new intersms($intersms_configs);
+            $intersms=new intersms($this->configs);
             return $intersms->xsend($this->buildRequest());
         }
         

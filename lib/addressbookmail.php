@@ -1,23 +1,14 @@
 <?PHP
-    require 'mail.php';
     class ADDRESSBOOKMail{
 
-        protected $appid='';
-
-        protected $appkey='';
-
-        protected $sign_type='';
+        protected $configs;
 
         protected $Address='';
 
         protected $Target='';
  
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
         
         public function setAddress($address,$name=''){
@@ -38,21 +29,11 @@
         }
         
         public function subscribe(){
-            $mail_configs['appid']=$this->appid;
-            $mail_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $mail_configs['sign_type']=$this->sign_type;
-            }
-            $addressbook=new mail($mail_configs);
+            $addressbook=new mail($this->configs);
             return $addressbook->subscribe($this->buildRequest());
         }
         public function unsubscribe(){
-            $mail_configs['appid']=$this->appid;
-            $mail_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $mail_configs['sign_type']=$this->sign_type;
-            }
-            $addressbook=new mail($mail_configs);
+            $addressbook=new mail($this->configs);
             return $addressbook->unsubscribe($this->buildRequest());
         }
         

@@ -1,12 +1,7 @@
 <?PHP
-    require 'message.php';
     class MESSAGETemplatePOST{
         
-        protected $appid='';
-        
-        protected $appkey='';
-        
-        protected $sign_type='';
+        protected $configs;
         
         protected $sms_title='';
         
@@ -15,11 +10,7 @@
         protected $sms_content='';
         
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->appid=$configs;
         }
         
         public function SetTitle($sms_title){
@@ -47,12 +38,7 @@
             return $request;
         }
         public function postTemplate(){
-            $message_configs['appid']=$this->appid;
-            $message_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $message_configs['sign_type']=$this->sign_type;
-            }
-            $message=new message($message_configs);
+            $message=new message($this->configs);
             return $message->postTemplate($this->buildRequest());
         }
         

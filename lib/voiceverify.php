@@ -1,25 +1,14 @@
 <?PHP
-    require 'voice.php';
     class voiceverify{
         
-        protected $appid='';
-        
-        protected $appkey='';
-        
-        protected $sign_type='';
-        
+        protected $configs;
+
         protected $To='';
-        
         
         protected $Code='';
 
-        
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
         
         public function SetTo($address){
@@ -37,12 +26,7 @@
             return $request;
         }
         public function verify(){
-            $voice_configs['appid']=$this->appid;
-            $voice_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $voice_configs['sign_type']=$this->sign_type;
-            }
-            $voice=new voice($voice_configs);
+            $voice=new voice($this->configs);
             return $voice->verify($this->buildRequest());
         }
         

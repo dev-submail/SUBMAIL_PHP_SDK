@@ -1,14 +1,14 @@
 <?PHP
     class message{
-        
         protected $base_url='http://api.mysubmail.com/';
-        //protected $base_url='http://api.submail.cn/';
-        var $message_configs;
-        
-        var $signType='normal';
-        
+        protected $message_configs;
+        protected $signType='normal';
+
         function __construct($message_configs){
             $this->message_configs=$message_configs;
+            if(!empty($message_configs['server'])){
+                $this->base_url=$message_configs['server'];
+            }
         }
         
         protected function createSignature($request){

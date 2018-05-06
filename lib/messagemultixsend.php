@@ -1,23 +1,13 @@
 <?PHP
-    require 'message.php';
     class MESSAGEMultiXsend{
+        protected $configs;
 
-        protected $appid='';
-
-        protected $appkey='';
-        
-        protected $sign_type='';
-        
         protected $Multi=array();
 
         protected $Project='';
         
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
 
         public function AddMulti($multi){
@@ -42,16 +32,7 @@
         }
 
         public function multixsend(){
-
-            $message_configs['appid']=$this->appid;
-            $message_configs['appkey']=$this->appkey;
-            
-            if($this->sign_type!=''){
-                $message_configs['sign_type']=$this->sign_type;
-            }
-            
-            $message=new message($message_configs);
-            
+            $message=new message($this->configs);
             return $message->multixsend($this->buildRequest());
         }
         

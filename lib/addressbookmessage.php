@@ -1,23 +1,14 @@
 <?PHP
-    require 'message.php';
     class ADDRESSBOOKMessage{
 
-        protected $appid='';
-
-        protected $appkey='';
-
-        protected $sign_type='';
+        protected $configs;
 
         protected $Address='';
 
         protected $Target='';
 
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
         
         public function setAddress($address){
@@ -38,21 +29,11 @@
             
         }
         public function subscribe(){
-            $message_configs['appid']=$this->appid;
-            $message_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $message_configs['sign_type']=$this->sign_type;
-            }
-            $addressbook=new message($message_configs);
+            $addressbook=new message($this->configs);
             return $addressbook->subscribe($this->buildRequest());
         }
         public function unsubscribe(){
-            $message_configs['appid']=$this->appid;
-            $message_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $message_configs['sign_type']=$this->sign_type;
-            }
-            $addressbook=new message($message_configs);
+            $addressbook=new message($this->configs);
             return $addressbook->unsubscribe($this->buildRequest());
         }
         

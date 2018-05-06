@@ -1,12 +1,8 @@
 <?PHP
-    require 'voice.php';
+
     class mobiledatacharge{
-        
-        protected $appid='';
-        
-        protected $appkey='';
-        
-        protected $sign_type='';
+
+        protected $configs;
         
         protected $To=array();
         
@@ -19,11 +15,7 @@
         protected $ct='';
         
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
         
         public function AddTo($address){
@@ -74,12 +66,7 @@
             return $request;
         }
         public function charge(){
-            $mobiledata_configs['appid']=$this->appid;
-            $mobiledata_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $mobiledata_configs['sign_type']=$this->sign_type;
-            }
-            $mobiledata=new mobiledata($mobiledata_configs);
+            $mobiledata=new mobiledata($this->configs);
             return $mobiledata->charge($this->buildRequest());
         }
         

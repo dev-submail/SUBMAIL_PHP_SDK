@@ -1,12 +1,7 @@
 <?PHP
-    require 'mail.php';
     class MAILXsend{
 
-        protected $appid='';
-
-        protected $appkey='';
-
-        protected $sign_type='';
+        protected $configs;
 
         protected $To=array();
 
@@ -35,11 +30,7 @@
         protected $asynchronous="false";
 
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
 
         public function AddTo($address,$name=''){
@@ -169,14 +160,7 @@
         }
         
         public function xsend(){
-
-            $mail_configs['appid']=$this->appid;
-            $mail_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $mail_configs['sign_type']=$this->sign_type;
-            }
-            
-            $mail=new mail($mail_configs);
+            $mail=new mail($this->configs);
             return $mail->xsend($this->buildRequest());
         }
     }

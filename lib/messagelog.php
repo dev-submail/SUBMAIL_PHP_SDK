@@ -1,12 +1,7 @@
 <?PHP
-    require 'message.php';
     class MESSAGELog{
         
-        protected $appid='';
-        
-        protected $appkey='';
-        
-        protected $sign_type='';
+        protected $configs;
         
         protected $recipient='';
         
@@ -25,11 +20,7 @@
         protected $offset='';
         
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->appid=$configs;
         }
         
         public function setRecipient($recipient){
@@ -115,12 +106,7 @@
         }
         
         public function log(){
-            $message_configs['appid']=$this->appid;
-            $message_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $message_configs['sign_type']=$this->sign_type;
-            }
-            $message=new message($message_configs);
+            $message=new message($this->configs);
             return $message->log($this->buildRequest());
         }
         

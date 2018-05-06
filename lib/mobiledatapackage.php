@@ -1,20 +1,10 @@
 <?PHP
-    require 'mobiledata.php';
     class mobiledatapackage{
         
-        protected $appid='';
-        
-        protected $appkey='';
-        
-        protected $sign_type='';
-        
+        protected $configs;
         
         function __construct($configs){
-            $this->appid=$configs['appid'];
-            $this->appkey=$configs['appkey'];
-            if(!empty($configs['sign_type'])){
-                $this->sign_type=$configs['sign_type'];
-            }
+            $this->configs=$configs;
         }
         
         public function buildRequest(){
@@ -22,12 +12,7 @@
             return $request;
         }
         public function package(){
-            $mobiledata_configs['appid']=$this->appid;
-            $mobiledata_configs['appkey']=$this->appkey;
-            if($this->sign_type!=''){
-                $mobiledata_configs['sign_type']=$this->sign_type;
-            }
-            $mobiledata=new mobiledata($mobiledata_configs);
+            $mobiledata=new mobiledata($this->configs);
             return $mobiledata->package($this->buildRequest());
         }
         

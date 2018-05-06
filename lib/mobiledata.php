@@ -2,21 +2,23 @@
     class mobiledata{
         
         protected $base_url='http://api.mysubmail.com/';
-        //protected $base_url='http://api.submail.cn/';
+
+        protected $mobiledata_configs;
         
-        var $voice_configs;
+        protected $signType='normal';
         
-        var $signType='normal';
-        
-        function __construct($voice_configs){
-            $this->voice_configs=$voice_configs;
+        function __construct($configs){
+            $this->mobiledata_configs=$configs;
+            if(!empty($configs['server'])){
+                $this->base_url=$configs['server'];
+            }
         }
         
         protected function createSignature($request){
             $r="";
             switch($this->signType){
                 case 'normal':
-                    $r=$this->voice_configs['appkey'];
+                    $r=$this->mobiledata_configs['appkey'];
                     break;
                 case 'md5':
                     $r=$this->buildSignature($this->argSort($request));
@@ -30,8 +32,8 @@
         
         protected function buildSignature($request){
             $arg="";
-            $app=$this->voice_configs['appid'];
-            $appkey=$this->voice_configs['appkey'];
+            $app=$this->mobiledata_configs['appid'];
+            $appkey=$this->mobiledata_configs['appkey'];
             while (list ($key, $val) = each ($request)) {
                 $arg.=$key."=".$val."&";
             }
@@ -78,17 +80,17 @@
         
         public function package($request){
             $api=$this->base_url.'mobiledata/package.json';
-            $request['appid']=$this->voice_configs['appid'];
+            $request['appid']=$this->mobiledata_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
-            if(empty($this->voice_configs['sign_type'])
-               && $this->voice_configs['sign_type']==""
-               && $this->voice_configs['sign_type']!="normal"
-               && $this->voice_configs['sign_type']!="md5"
-               && $this->voice_configs['sign_type']!="sha1"){
+            if(empty($this->mobiledata_configs['sign_type'])
+               && $this->mobiledata_configs['sign_type']==""
+               && $this->mobiledata_configs['sign_type']!="normal"
+               && $this->mobiledata_configs['sign_type']!="md5"
+               && $this->mobiledata_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
-                $this->signType=$this->voice_configs['sign_type'];
-                $request['sign_type']=$this->voice_configs['sign_type'];
+                $this->signType=$this->mobiledata_configs['sign_type'];
+                $request['sign_type']=$this->mobiledata_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
             $package=$this->APIHttpRequestCURL($api,$request);
@@ -97,17 +99,17 @@
         
         public function TOService($request){
             $api=$this->base_url.'mobiledata/toservice.json';
-            $request['appid']=$this->voice_configs['appid'];
+            $request['appid']=$this->mobiledata_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
-            if(empty($this->voice_configs['sign_type'])
-               && $this->voice_configs['sign_type']==""
-               && $this->voice_configs['sign_type']!="normal"
-               && $this->voice_configs['sign_type']!="md5"
-               && $this->voice_configs['sign_type']!="sha1"){
+            if(empty($this->mobiledata_configs['sign_type'])
+               && $this->mobiledata_configs['sign_type']==""
+               && $this->mobiledata_configs['sign_type']!="normal"
+               && $this->mobiledata_configs['sign_type']!="md5"
+               && $this->mobiledata_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
-                $this->signType=$this->voice_configs['sign_type'];
-                $request['sign_type']=$this->voice_configs['sign_type'];
+                $this->signType=$this->mobiledata_configs['sign_type'];
+                $request['sign_type']=$this->mobiledata_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
             $TOService=$this->APIHttpRequestCURL($api,$request);
@@ -116,17 +118,17 @@
         
         public function charge($request){
             $api=$this->base_url.'mobiledata/charge.json';
-            $request['appid']=$this->voice_configs['appid'];
+            $request['appid']=$this->mobiledata_configs['appid'];
             $request['timestamp']=$this->getTimestamp();
-            if(empty($this->voice_configs['sign_type'])
-               && $this->voice_configs['sign_type']==""
-               && $this->voice_configs['sign_type']!="normal"
-               && $this->voice_configs['sign_type']!="md5"
-               && $this->voice_configs['sign_type']!="sha1"){
+            if(empty($this->mobiledata_configs['sign_type'])
+               && $this->mobiledata_configs['sign_type']==""
+               && $this->mobiledata_configs['sign_type']!="normal"
+               && $this->mobiledata_configs['sign_type']!="md5"
+               && $this->mobiledata_configs['sign_type']!="sha1"){
                 $this->signType='normal';
             }else{
-                $this->signType=$this->voice_configs['sign_type'];
-                $request['sign_type']=$this->voice_configs['sign_type'];
+                $this->signType=$this->mobiledata_configs['sign_type'];
+                $request['sign_type']=$this->mobiledata_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
             $charge=$this->APIHttpRequestCURL($api,$request);

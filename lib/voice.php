@@ -2,14 +2,16 @@
     class voice{
         
         protected $base_url='http://api.mysubmail.com/';
-        //protected $base_url='http://api.submail.cn/';
+
+        protected $voice_configs;
         
-        var $voice_configs;
-        
-        var $signType='normal';
+        protected $signType='normal';
         
         function __construct($voice_configs){
             $this->voice_configs=$voice_configs;
+            if(!empty($voice_configs['server'])){
+                $this->base_url=$voice_configs['server'];
+            }
         }
         
         protected function createSignature($request){

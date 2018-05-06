@@ -2,13 +2,16 @@
     class mail{
         
         protected $base_url='http://api.mysubmail.com/';
-        //protected $base_url='http://api.submail.cn/';
-        
-        var $mail_configs;
-        var $signType='normal';
+ 
+        protected $mail_configs;
+        protected $signType='normal';
 
         function __construct($mail_config){
             $this->mail_configs=$mail_config;
+            if(!empty($mail_config['server'])){
+                $this->base_url=$mail_config['server'];
+            }
+            echo $this->base_url;
         }
 
         protected function createSignature($request){

@@ -2,14 +2,16 @@
     class intersms{
         
         protected $base_url='http://api.mysubmail.com/';
-        //protected $base_url='http://api.submail.cn/';
+
+        protected $intersms_configs;
         
-        var $intersms_configs;
-        
-        var $signType='normal';
+        protected $signType='normal';
         
         function __construct($intersms_configs){
             $this->intersms_configs=$intersms_configs;
+            if(!empty($intersms_configs['server'])){
+                $this->base_url=$intersms_configs['server'];
+            }
         }
         
         protected function createSignature($request){
