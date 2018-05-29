@@ -10,7 +10,7 @@
         protected $sms_content='';
         
         function __construct($configs){
-            $this->appid=$configs;
+            $this->configs=$configs;
         }
         
         public function SetTitle($sms_title){
