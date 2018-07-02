@@ -100,8 +100,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $send=$this->APIHttpRequestCURL($api,$request);
-            return $send;
+            return $this->APIHttpRequestCURL($api,$request);
         }
         
         public function xsend($request){
@@ -119,8 +118,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $send=$this->APIHttpRequestCURL($api,$request);
-            return $send;
+            return $this->APIHttpRequestCURL($api,$request);
         }
         public function multixsend($request){
             $api=$this->base_url.'message/multixsend.json';
@@ -136,11 +134,27 @@
                 $this->signType=$this->message_configs['sign_type'];
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
-            
-            
             $request['signature']=$this->createSignature($request);
-            $send=$this->APIHttpRequestCURL($api,$request);
-            return $send;
+            return $this->APIHttpRequestCURL($api,$request);
+        }
+
+        public function multisend($request){
+            $api=$this->base_url.'message/multisend.json';
+            $request['appid']=$this->message_configs['appid'];
+            $request['timestamp']=$this->getTimestamp();
+            if(empty($this->message_configs['sign_type'])
+               && $this->message_configs['sign_type']==""
+               && $this->message_configs['sign_type']!="normal"
+               && $this->message_configs['sign_type']!="md5"
+               && $this->message_configs['sign_type']!="sha1"){
+                $this->signType='normal';
+            }else{
+                $this->signType=$this->message_configs['sign_type'];
+                $request['sign_type']=$this->message_configs['sign_type'];
+            }
+
+            $request['signature']=$this->createSignature($request);
+            return $this->APIHttpRequestCURL($api,$request);
         }
         
         public function subscribe($request){
@@ -158,8 +172,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $subscribe=$this->APIHttpRequestCURL($api,$request);
-            return $subscribe;
+            return $this->APIHttpRequestCURL($api,$request);
         }
         
         public function unsubscribe($request){
@@ -177,8 +190,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $unsubscribe=$this->APIHttpRequestCURL($api,$request);
-            return $unsubscribe;
+            return $this->APIHttpRequestCURL($api,$request);
         }
         public function log($request){
             $api=$this->base_url.'log/message.json';
@@ -195,8 +207,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $log=$this->APIHttpRequestCURL($api,$request);
-            return $log;
+            return $this->APIHttpRequestCURL($api,$request);
         }
         public function getTemplate($request){
             $api=$this->base_url.'message/template.json';
@@ -213,8 +224,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $templates=$this->APIHttpRequestCURL($api,$request,'get');
-            return $templates;
+            return $this->APIHttpRequestCURL($api,$request,'get');
         }
         public function postTemplate($request){
             $api=$this->base_url.'message/template.json';
@@ -231,8 +241,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $templates=$this->APIHttpRequestCURL($api,$request,'post');
-            return $templates;
+            return $this->APIHttpRequestCURL($api,$request,'post');
         }
         public function putTemplate($request){
             $api=$this->base_url.'message/template.json';
@@ -249,8 +258,7 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $templates=$this->APIHttpRequestCURL($api,$request,'PUT');
-            return $templates;
+            return $this->APIHttpRequestCURL($api,$request,'PUT');
         }
         public function deleteTemplate($request){
             $api=$this->base_url.'message/template.json';
@@ -267,7 +275,6 @@
                 $request['sign_type']=$this->message_configs['sign_type'];
             }
             $request['signature']=$this->createSignature($request);
-            $templates=$this->APIHttpRequestCURL($api,$request,'DELETE');
-            return $templates;
+            return $this->APIHttpRequestCURL($api,$request,'DELETE');
         }
     }
