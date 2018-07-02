@@ -6,7 +6,7 @@
         protected $template_id='';
         
         function __construct($configs){
-            $this->appid=$configs;
+            $this->configs=$configs;
         }
         
         public function SetTemplate($template_id){
