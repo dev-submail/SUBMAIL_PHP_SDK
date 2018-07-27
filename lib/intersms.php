@@ -68,14 +68,13 @@
         protected function APIHttpRequestCURL($api,$post_data,$method='post'){
             if($method!='get'){
                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $api);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                curl_setopt($ch,CURLOPT_HTTPHEADER,array("X-HTTP-Method-Override: $method"));
-                if($method!='post'){
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
-                }else{
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-                }
+                curl_setopt_array($ch, array(
+                   CURLOPT_URL => $api,
+                   CURLOPT_RETURNTRANSFER => true,
+                   CURLOPT_POSTFIELDS => http_build_query($post_data),
+                   CURLOPT_CUSTOMREQUEST => strtoupper($method),
+                   CURLOPT_HTTPHEADER => array("Content-Type: application/x-www-form-urlencoded")
+                ));
             }else{
                 $url=$api.'?'.http_build_query($post_data);
                 $ch = curl_init($url) ;
