@@ -66,12 +66,22 @@
             return $timestamp['timestamp'];
         }
         
-        protected function APIHttpRequestCURL($api,$post_data){
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $api);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        protected function APIHttpRequestCURL($api,$post_data,$method='post'){
+            if($method!='get'){
+                $ch = curl_init();
+                curl_setopt_array($ch, array(
+                   CURLOPT_URL => $api,
+                   CURLOPT_RETURNTRANSFER => true,
+                   CURLOPT_POSTFIELDS => http_build_query($post_data),
+                   CURLOPT_CUSTOMREQUEST => strtoupper($method),
+                   CURLOPT_HTTPHEADER => array("Content-Type: application/x-www-form-urlencoded")
+                ));
+            }else{
+                $url=$api.'?'.http_build_query($post_data);
+                $ch = curl_init($url) ;
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1) ;
+                curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1) ;
+            }
             $output = curl_exec($ch);
             curl_close($ch);
             $output = trim($output, "\xEF\xBB\xBF");
