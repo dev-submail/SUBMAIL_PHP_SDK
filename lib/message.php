@@ -34,7 +34,7 @@
             while (list ($key, $val) = each ($request)) {
                 $arg.=$key."=".$val."&";
             }
-            $arg = substr($arg,0,count($arg)-2);
+            $arg = rtrim($arg,"&");
             if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
             
             if($this->signType=='sha1'){
