@@ -11,7 +11,6 @@
             if(!empty($mail_config['server'])){
                 $this->base_url=$mail_config['server'];
             }
-            echo $this->base_url;
         }
 
         protected function createSignature($request){
