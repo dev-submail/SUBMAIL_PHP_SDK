@@ -107,7 +107,7 @@
                 foreach($this->To as $tmp){
                     $request['to'].=$tmp['name'].'<'.$tmp['address'].'>,';
                 }
-                $request['to'] = substr($request['to'],0,count($request['to'])-2);
+                $request['to'] = substr($request['to'],0,-1);
             }
             if(!empty($this->Addressbook)){
                 $request['addressbook']='';
