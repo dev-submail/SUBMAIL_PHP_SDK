@@ -94,7 +94,7 @@
                 foreach($this->To as $tmp){
                     $request['to'].=$tmp['name'].'<'.$tmp['address'].'>,';
                 }
-                $request['to'] = substr($request['to'],0,count($request['to'])-2);
+                $request['to'] = substr($request['to'],0,len($request['to'])-2);
             }
 
             if(!empty($this->Addressbook)){
@@ -102,7 +102,7 @@
                 foreach($this->Addressbook as $tmp){
                     $request['addressbook'].=$tmp.',';
                 }
-                $request['addressbook'] = substr($request['addressbook'],0,count($request['addressbook'])-2);
+                $request['addressbook'] = substr($request['addressbook'],0,len($request['addressbook'])-2);
             }
 
             if($this->From!=''){
@@ -123,7 +123,7 @@
                 foreach($this->Cc as $tmp){
                     $request['cc'].=$tmp['name'].'<'.$tmp['address'].'>,';
                 }
-                $request['cc'] = substr($request['cc'],0,count($request['cc'])-2);
+                $request['cc'] = substr($request['cc'],0,len($request['cc'])-2);
             }
             
             if(!empty($this->Bcc)){
@@ -131,7 +131,7 @@
                 foreach($this->Bcc as $tmp){
                     $request['bcc'].=$tmp['name'].'<'.$tmp['address'].'>,';
                 }
-                $request['bcc'] = substr($request['bcc'],0,count($request['bcc'])-2);
+                $request['bcc'] = substr($request['bcc'],0,len($request['bcc'])-2);
             }
 
             if($this->Subject!=''){

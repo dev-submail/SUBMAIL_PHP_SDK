@@ -38,7 +38,7 @@
                 foreach($this->Addressbook as $tmp){
                     $request['addressbook'].=$tmp.',';
                 }
-                $request['addressbook'] = substr($request['addressbook'],0,count($request['addressbook'])-2);
+                $request['addressbook'] = substr($request['addressbook'],0,len($request['addressbook'])-2);
             }
             
             $request['project']=$this->Project;

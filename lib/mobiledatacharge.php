@@ -45,7 +45,7 @@
                 foreach($this->To as $tmp){
                     $request['to'].=$tmp.',';
                 }
-                $request['to'] = substr($request['to'],0,count($request['to'])-2);
+                $request['to'] = substr($request['to'],0,len($request['to'])-2);
             }
             if($this->cm !=''){
                 $request['cm']=$this->cm;
