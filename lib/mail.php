@@ -38,7 +38,7 @@
                     $arg.=$key."=".$val."&";
                 }
             }
-            $arg = substr($arg,0,len($arg)-2);
+            $arg = substr($arg,0,strlen($arg)-2);
             if(get_magic_quotes_gpc()){$arg = stripslashes($arg);}
             if($this->signType=='sha1'){
                 $r=sha1($app.$appkey.$arg.$app.$appkey);

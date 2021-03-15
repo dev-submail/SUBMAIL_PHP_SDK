@@ -27,14 +27,14 @@
                 foreach($this->To as $tmp){
                     $request['to'].=$tmp.',';
                 }
-                $request['to'] = substr($request['to'],0,len($request['to'])-2);
+                $request['to'] = substr($request['to'],0,strlen($request['to'])-2);
             }
             if(!empty($this->Addressbook)){
                 $request['addressbook']='';
                 foreach($this->Addressbook as $tmp){
                     $request['addressbook'].=$tmp.',';
                 }
-                $request['addressbook'] = substr($request['addressbook'],0,len($request['addressbook'])-2);
+                $request['addressbook'] = substr($request['addressbook'],0,strlen($request['addressbook'])-2);
             }
             return $request;
         }
